@@ -47,4 +47,4 @@ if sys.platform.startswith('linux'):
             raise SystemExit('%s not linked against %s' % (exe, req))
 
 else:
-    raise NotImplementedError('%s not yet supported' % sys.platform)
+    print('%s not yet supported' % sys.platform)
