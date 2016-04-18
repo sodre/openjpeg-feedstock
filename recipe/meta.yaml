@@ -8,7 +8,8 @@ source:
     md5: 3e1c451c087f8462955426da38aa3b3d
 
 build:
-    number: 1
+    number: 2
+    skip: True  # [win and py35]
     features:
         - vc9  # [win and py27]
         - vc10  # [win and py34]
@@ -27,14 +28,20 @@ requirements:
         - zlib
 
 test:
+    requires:
+        # Avoids
+        # """Error: The following specifications were found to be in conflict:
+        # - udunits2 2.2.20 vc9_1"""
+        - python {{ environ['PY_VER'] + '*' }}  # [win]
     files:
         - p0_01.j2k
     commands:
         - opj_dump -i p0_01.j2k
+        - conda inspect linkages -n _test openjpeg  # [linux]
 
 about:
     home: http://www.openjpeg.org/
-    license: 2-clauses BSD (https://github.com/uclouvain/openjpeg/blob/master/LICENSE)
+    license: BSD 2-clauses
     summary: An open-source JPEG 2000 codec written in C
 
 extra:
