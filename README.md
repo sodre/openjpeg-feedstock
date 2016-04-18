@@ -3,7 +3,7 @@ About openjpeg
 
 Home: http://www.openjpeg.org/
 
-Package license: 2-clauses BSD (https://github.com/uclouvain/openjpeg/blob/master/LICENSE)
+Package license: BSD 2-clauses
 
 Feedstock license: BSD
 
