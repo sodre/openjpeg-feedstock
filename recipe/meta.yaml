@@ -9,6 +9,7 @@ source:
 
 build:
     number: 2
+    skip: True  # [win and py35]
     features:
         - vc9  # [win and py27]
         - vc10  # [win and py34]
@@ -28,11 +29,15 @@ requirements:
 
 test:
     requires:
-        - python 2.7.11
+        # Avoids
+        # """Error: The following specifications were found to be in conflict:
+        # - udunits2 2.2.20 vc9_1"""
+        - python {{ environ['PY_VER'] + '*' }}  # [win]
     files:
         - p0_01.j2k
     commands:
         - opj_dump -i p0_01.j2k
+        - conda inspect linkages -n _test openjpeg  # [linux]
 
 about:
     home: http://www.openjpeg.org/
