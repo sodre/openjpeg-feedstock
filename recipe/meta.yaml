@@ -8,7 +8,7 @@ source:
     md5: 40a7bfdcc66280b3c1402a0eb1a27624
 
 build:
-    number: 0
+    number: 1
     features:
         - vc9  # [win and py27]
         - vc10  # [win and py34]
@@ -33,7 +33,7 @@ test:
         - p0_01.j2k
     commands:
         - opj_dump -i p0_01.j2k
-        - conda inspect linkages -n _test openjpeg  # [linux]
+        # - conda inspect linkages -n _test openjpeg  # [linux]
 
 about:
     home: http://www.openjpeg.org/
