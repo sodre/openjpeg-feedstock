@@ -1,14 +1,14 @@
 package:
     name: openjpeg
-    version: 2.1.0
+    version: 2.1.2
 
 source:
-    fn: version.2.1.tar.gz
-    url: https://github.com/uclouvain/openjpeg/archive/version.2.1.tar.gz
-    md5: 3e1c451c087f8462955426da38aa3b3d
+    fn: v2.1.2.tar.gz
+    url: https://github.com/uclouvain/openjpeg/archive/v2.1.2.tar.gz
+    md5: 40a7bfdcc66280b3c1402a0eb1a27624
 
 build:
-    number: 6
+    number: 0
     features:
         - vc9  # [win and py27]
         - vc10  # [win and py34]
