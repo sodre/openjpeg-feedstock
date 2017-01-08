@@ -7,7 +7,7 @@ Package license: BSD 2-clauses
 
 Feedstock license: BSD 3-Clause
 
-Summary: An open-source JPEG 2000 codec written in C
+Summary: An open-source JPEG 2000 codec written in C.
 
 
 
