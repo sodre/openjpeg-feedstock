@@ -1,45 +1,50 @@
 {% set version = "2.1.2" %}
 
 package:
-    name: openjpeg
-    version: {{ version }}
+  name: openjpeg
+  version: {{ version }}
 
 source:
-    fn: v{{ version }}.tar.gz
-    url: https://github.com/uclouvain/openjpeg/archive/v{{ version }}.tar.gz
-    md5: 40a7bfdcc66280b3c1402a0eb1a27624
+  fn: v{{ version }}.tar.gz
+  url: https://github.com/uclouvain/openjpeg/archive/v{{ version }}.tar.gz
+  sha256: 4ce77b6ef538ef090d9bde1d5eeff8b3069ab56c4906f083475517c2c023dfa7
 
 build:
-    number: 1
-    features:
-        - vc9  # [win and py27]
-        - vc10  # [win and py34]
-        - vc14  # [win and py35]
+  number: 2
+  skip: True  # [py36]
+  features:
+    - vc9  # [win and py27]
+    - vc10  # [win and py34]
+    - vc14  # [win and py>=35]
 
 requirements:
-    build:
-        - python  # [win]
-        - cmake
-        - libtiff 4.0.*
-        - libpng >=1.6.23,<1.7
-        - zlib 1.2.*
-    run:
-        - libtiff 4.0.*
-        - libpng >=1.6.23,<1.7
-        - zlib 1.2.*
+  build:
+    - python  # [win]
+    - cmake
+    - libtiff 4.0.*
+    - libpng >=1.6.23,<1.7
+    - zlib 1.2.*
+    - vc 14  # [win and py>=35]
+  run:
+    - libtiff 4.0.*
+    - libpng >=1.6.23,<1.7
+    - zlib 1.2.*
+    - vc 9  # [win and py27]
+    - vc 10  # [win and py34]
+    - vc 14  # [win and py>=35]
 
 test:
-    requires:
-        - python {{ environ['PY_VER'] + '*' }}  # [win]
-    files:
-        - p0_01.j2k
-    commands:
-        - opj_dump -i p0_01.j2k
-        # - conda inspect linkages -n _test openjpeg  # [linux]
+  files:
+    - p0_01.j2k
+  commands:
+    - opj_dump -i p0_01.j2k
+    - conda inspect linkages -p $PREFIX openjpeg  # [not win]
+    - conda inspect objects -p $PREFIX openjpeg  # [osx]
 
 about:
     home: http://www.openjpeg.org/
     license: BSD 2-clauses
+    license_file: LICENSE
     summary: 'An open-source JPEG 2000 codec written in C.'
 
 extra:
