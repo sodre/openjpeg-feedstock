@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir build && cd build
+
 cmake -D CMAKE_INSTALL_PREFIX=$PREFIX \
       -D TIFF_LIBRARY=$PREFIX/lib/libtiff${SHLIB_EXT} \
       -D TIFF_INCLUDE_DIR=$PREFIX/include \
@@ -7,9 +9,9 @@ cmake -D CMAKE_INSTALL_PREFIX=$PREFIX \
       -D PNG_PNG_INCLUDE_DIR=$PREFIX/include \
       -D ZLIB_LIBRARY=$PREFIX/lib/libz${SHLIB_EXT} \
       -D ZLIB_INCLUDE_DIR=$PREFIX/include \
-      .
+      $SRC_DIR
 
-make
-make tests
-make install
+make -j$CPU_COUNT
+ctest
+make install -j$CPU_COUNT
 make clean
