@@ -1,3 +1,5 @@
+mkdir build
+cd build
 
 cmake -G "NMake Makefiles" ^
       -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
@@ -8,10 +10,13 @@ cmake -G "NMake Makefiles" ^
       -D ZLIB_LIBRARY=%LIBRARY_LIB%\zlib.lib ^
       -D ZLIB_INCLUDE_DIR=%LIBRARY_INC% ^
       -D CMAKE_BUILD_TYPE=Release ^
-      .
+      %SRC_DIR%
 if errorlevel 1 exit 1
 
 nmake
+if errorlevel 1 exit 1
+
+ctest
 if errorlevel 1 exit 1
 
 nmake install
