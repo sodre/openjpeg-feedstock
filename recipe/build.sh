@@ -12,6 +12,6 @@ cmake -D CMAKE_INSTALL_PREFIX=$PREFIX \
       $SRC_DIR
 
 make -j$CPU_COUNT
-make tests -j$CPU_COUNT
+ctest
 make install -j$CPU_COUNT
 make clean
