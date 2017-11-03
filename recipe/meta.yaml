@@ -9,29 +9,26 @@ source:
   sha256: 3dc787c1bb6023ba846c2a0d9b1f6e179f1cd255172bde9eb75b01f1e6c7d71a
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win and py36]
   features:
     - vc9  # [win and py27]
-    - vc10  # [win and py34]
     - vc14  # [win and (py35 or py36)]
 
 requirements:
   build:
     - python  # [win]
     - cmake
-    - libtiff 4.0.*
-    - libpng >=1.6.28,<1.7
-    - zlib 1.2.8
+    - libtiff >=4.0.3,<4.0.8
+    - libpng >=1.6.22,<1.6.31
+    - zlib 1.2.11
     - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
     - vc 14  # [win and (py35 or py36)]
   run:
-    - libtiff 4.0.*
-    - libpng >=1.6.28,<1.7
-    - zlib 1.2.8
+    - libtiff >=4.0.3,<4.0.8
+    - libpng >=1.6.22,<1.6.31
+    - zlib 1.2.11
     - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
     - vc 14  # [win and (py35 or py36)]
 
 test:
@@ -39,8 +36,8 @@ test:
     - p0_01.j2k
   commands:
     - opj_dump -i p0_01.j2k
-    - conda inspect linkages -p $PREFIX openjpeg  # [not win]
-    - conda inspect objects -p $PREFIX openjpeg  # [osx]
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
     home: http://www.openjpeg.org/
