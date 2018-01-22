@@ -9,7 +9,7 @@ source:
   sha256: 4afc996cd5e0d16360d71c58216950bcb4ce29a3272360eb29cadb1c8bce4efc
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win and py36]
   features:
     - vc9  # [win and py27]
@@ -19,14 +19,14 @@ requirements:
   build:
     - python  # [win]
     - cmake
-    - libtiff >=4.0.3,<4.0.8
-    - libpng >=1.6.22,<1.6.31
+    - libtiff >=4.0.8,<4.0.10
+    - libpng >=1.6.32,<1.6.35
     - zlib 1.2.11
     - vc 9  # [win and py27]
     - vc 14  # [win and (py35 or py36)]
   run:
-    - libtiff >=4.0.3,<4.0.8
-    - libpng >=1.6.22,<1.6.31
+    - libtiff >=4.0.8,<4.0.10
+    - libpng >=1.6.32,<1.6.35
     - zlib 1.2.11
     - vc 9  # [win and py27]
     - vc 14  # [win and (py35 or py36)]
