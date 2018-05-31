@@ -9,27 +9,23 @@ source:
   sha256: 3dc787c1bb6023ba846c2a0d9b1f6e179f1cd255172bde9eb75b01f1e6c7d71a
 
 build:
-  number: 2
-  skip: True  # [win and py36]
-  features:
-    - vc9  # [win and py27]
-    - vc14  # [win and (py35 or py36)]
+  number: 3
 
 requirements:
   build:
-    - python  # [win]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - {{ compiler('fortran') }}
     - cmake
+    - pkg-config
+  host:
     - libtiff >=4.0.8,<4.0.10
-    - libpng >=1.6.32,<1.6.35
-    - zlib 1.2.11
-    - vc 9  # [win and py27]
-    - vc 14  # [win and (py35 or py36)]
-  run:
+    - libpng
+    - zlib
+  run_exports:
     - libtiff >=4.0.8,<4.0.10
-    - libpng >=1.6.32,<1.6.35
-    - zlib 1.2.11
-    - vc 9  # [win and py27]
-    - vc 14  # [win and (py35 or py36)]
+    - libpng
+    - zlib
 
 test:
   files:
