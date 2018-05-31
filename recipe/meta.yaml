@@ -22,7 +22,7 @@ requirements:
     - libtiff >=4.0.8,<4.0.10
     - libpng
     - zlib
-  run_exports:
+  run:
     - libtiff >=4.0.8,<4.0.10
     - libpng
     - zlib
