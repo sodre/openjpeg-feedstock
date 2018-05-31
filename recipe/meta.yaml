@@ -30,8 +30,11 @@ requirements:
 test:
   files:
     - p0_01.j2k
+  requires:
+    - pkg-config  # [not win]
   commands:
     - opj_dump -i p0_01.j2k
+    - pkg-config --exists libopenjp2  # [not win]
     - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
     - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
